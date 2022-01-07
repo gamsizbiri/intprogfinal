@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <a class="navbar-brand" href="#">Akdeniz Üniversitesi</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/anasayfa1">Ana Sayfa <span class="sr-only" > ('current')</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#" (click)="OturumuKapat()">Çıkış Yap <span class="sr-only" > ('current')</span></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="jumbotron bg-dark text-white">
+  <h1 class="display-4">Akdeniz Üniversitesi</h1>
+  <p class="lead">Öğrenci Sınav Sistemi</p>
+</div>
+<div class="container mt-3">
+  
+  <div class="row">
+    <div class="col-md-4 offset-md-4">
+      <div class="card">
+        <div class="card">
+          <div class="card-header">
+            <h2>Onaylama Metni</h2>
+          </div>
+          <div class="card-body">            
+            <p>Sınava zamanında girilmedir. Ancak, ek süre verilmemek kaydıyla ilk 10 dakika içerisinde sınav oturumuna giriş yapılabilir. İlk 10 dakika içinde sınava girmeyen öğrenciler sınava alınmayacaktır.</p>
+              <p>- Her sınav oturumuna girildiğinde ekranda görülecek "Sınav Açıklaması" dikkatlice okunmalıdır. Ardından "SINAVA BAŞLA” butonuna tıklandığında sınav ve süresi başlayacaktır.</p>
+              <p>- Her sınav öncesinde ekrana gelen "Onaylama Metni"nin dikkatlice okunup, onaylanması gerekmektedir. Bu onaylama yapılmadan sınav sorularının görülmesi mümkün olmayacaktır.</p>
+              
+              <form #onayForm="ngForm" >                     
+                    <td><button type="submit" class="btn btn-outline-info" [routerLink]="['/dersler']">Sınavlarıma Git</button></td>
+              </form>
+            <div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

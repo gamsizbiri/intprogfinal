@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <a class="navbar-brand" href="#">Akdeniz Üniversitesi</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/anasayfa1">Ana Sayfa <span class="sr-only" > ('current')</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/dersler">Sınavlar <span class="sr-only" > ('current')</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#" (click)="OturumuKapat()">Çıkış Yap <span class="sr-only" > ('current')</span></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="jumbotron bg-dark text-white">
+  <h1 class="display-4">Akdeniz Üniversitesi</h1>
+  <p class="lead">Öğrenci Sınav Sistemi</p>
+</div>
+<div class="container mt-3">
+  
+  <div class="row">
+    <div class="col-md-4 offset-md-4">
+      <div class="card">
+        <div class="card">
+          <div class="card-header">
+            <h2>Onaylama Metni</h2>
+          </div>
+          <div class="card-body">            
+            <p>Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni</p>
+              <div class="alert-link" class="btn btn-outline-info" (click)="ackapa=true;" *ngIf="!ackapa">Daha Fazla Göster</div>
+              <p *ngIf="ackapa" >Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni Onaylama Ve Sözleşme Metni</p>
+              <div class="alert-link" class="btn btn-outline-info" (click)="ackapa=false;" *ngIf="ackapa">Daha Az Göster</div>
+              <div class="card-footer">
+              <form #onayForm="ngForm" > 
+                    <input type="checkbox" name="onaykutu" #onaykutu ngModel required > Sözleşmeyi Okudum Kabul Ediyorum.
+                    <td><button type="submit" class="btn btn-outline-info" [disabled]="onayForm.invalid" [routerLink]="['/sorular']">Sınava Başla</button></td>
+              </form>
+            <div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

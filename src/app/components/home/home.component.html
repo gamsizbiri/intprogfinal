@@ -1,0 +1,109 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-info fixed-top">
+  <a class="navbar-brand" href="#">Akdeniz Üniversitesi</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/anasayfa">Ana Sayfa <span class="sr-only" > ('current')</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/sinavlar">Sınavlar <span class="sr-only" > ('current')</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#" (click)="OturumuKapat()">Çıkış Yap <span class="sr-only" > ('current')</span></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="jumbotron bg-info text-white">
+  <h1 class="display-4">Akdeniz Üniversitesi</h1>
+  <p class="lead">Sınav Yönetim Sistemi </p>
+</div>
+
+<div class="container mt-5">
+
+  <div class="row alert alert-danger" *ngIf="silme">
+    <div class="col-md-12">
+      <p> <b>{{secKayit.dersAdi}}</b> Dersi Silinecektir Onaylıyor musunuz?</p>
+      <button class="btn btn-outline-danger btn-sm" (click)="Sil()">Sil</button>
+      <button class="btn btn-outline-primary btn-sm ml-2" (click)="silme=false;">İptal</button>
+    </div>
+  </div>
+
+  <div class="row alert alert-secondary" *ngIf="detay">
+    <div class="col-md-6">
+      <h5>Ders Adı</h5>
+      <p>{{secKayit.dersAdi}}</p>
+      <h5>Soru Sayısı</h5>
+      <p>{{secKayit.soruSayisi}}</p>
+      <h5>Sınav Süresi</h5>
+      <p>{{secKayit.sinavSuresi + " Dakika"}}</p>
+    </div>
+    <div class="col-md-6">
+      <h5>Kayıt Tarihi</h5>
+      <p>{{secKayit.kayTarih | date:'dd.MM.yyyy HH:mm:ss'}}</p>
+      <h5>Düzenleme Tarihi</h5>
+      <p>{{secKayit.duzTarih | date:'dd.MM.yyyy HH:mm:ss'}}</p>
+      <button class="btn btn-outline-danger btn-sm" (click)="detay=false;">Kapat</button>
+
+    </div>
+  </div>
+  <div class="row" *ngIf="ekleduzenle">
+    <div class="col-md-12 alert alert-secondary">
+      <h4>Ders Ekle - Düzenle</h4>
+      <form #frm="ngForm" (submit)="Kaydet()">
+        <div class="form-group">
+          <label>Ders Adı</label>
+          <input type="text" class="form-control" name="dersadi" #dersadi ngModel [(ngModel)]="secKayit.dersAdi" required>
+        </div>
+        <div class="form-group">
+          <label>Soru Sayısı</label>
+          <input type="number" class="form-control" name="sorusayisi" #sorusayisi ngModel [(ngModel)]="secKayit.soruSayisi" required>
+        </div>
+        <div class="form-group">
+          <label>Sınav Süresi (Dakika)</label>
+          <input type="number" class="form-control" name="sinavsuresi" #sinavsuresi ngModel [(ngModel)]="secKayit.sinavSuresi" required>
+        </div>
+        <div class="form-group">
+          <input type="submit" value="Kaydet" class="btn btn-outline-success btn-sm">
+          <button class="btn btn-outline-danger btn-sm ml-2" (click)="ekleduzenle=false;">Kapat</button>
+        </div>
+      </form>
+      <div [ngClass]="sonuc.islem ? 'alert alert-success':'alert alert-danger'" *ngIf="sonuc.mesaj?.length>0">
+        {{sonuc.mesaj}}</div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <h4>Dersler</h4>
+      <button class="btn btn-outline-info btn-sm" (click)="ekleduzenle=true;">Ders Ekle</button>
+      <table class="table mt-2">
+        <thead>
+          <th>Ders Adı</th>
+          <th>Soru Sayısı</th>
+          <th>Sınav Süresi</th>
+          <th>Detaylar</th>
+          <th>Düzenle</th>
+          <th>Sil</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let kayit  of kayitlar">
+            <td> {{kayit.dersAdi}} </td>
+            <td> {{kayit.soruSayisi}} </td>
+            <td> {{kayit.sinavSuresi + " Dakika"}} </td>
+            <td><button class="btn btn-outline-info btn-sm" (click)="KayitSec(kayit);detay=true;">Detay</button>
+            </td>
+            <td><button class="btn btn-outline-warning btn-sm"
+                (click)="KayitSec(kayit);ekleduzenle=true;">Düzenle</button></td>
+            <td><button class="btn btn-outline-danger btn-sm" (click)="KayitSec(kayit);silme=true;">Sil</button></td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

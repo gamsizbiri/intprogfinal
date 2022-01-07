@@ -1,0 +1,65 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <a class="navbar-brand" href="#">Akdeniz Üniversitesi</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/anasayfa1">Ana Sayfa <span class="sr-only" > ('current')</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="dersler">Sınavlar <span class="sr-only" > ('current')</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#" (click)="OturumuKapat()">Çıkış Yap <span class="sr-only" > ('current')</span></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="jumbotron bg-dark text-white">
+  <h1 class="display-4">Akdeniz Üniversitesi</h1>
+  <p class="lead">Öğrenci Sınav Sistemi </p>
+</div>
+
+<div class="container mt-5">
+
+  <div class="row alert alert-secondary" *ngIf="detay">
+    <div class="col-md-6">
+      <h5>Ders Adı</h5>
+      <p>{{secKayit.dersAdi}}</p>
+      <h5>Soru Sayısı</h5>
+      <p>{{secKayit.soruSayisi}}</p>
+      <h5>Sınav Süresi</h5>
+      <p>{{secKayit.sinavSuresi + " Dakika"}}</p>
+      <button class="btn btn-outline-danger btn-sm" (click)="detay=false;">Kapat</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <h4>Dersler</h4>
+      <table class="table mt-2">
+        <thead>
+          <th>Ders Adı</th>
+          <th>Soru Sayısı</th>
+          <th>Sınav Süresi</th>
+          <th>Detaylar</th>
+          <th>Sınava Gir</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let kayit  of kayitlar">
+            <td> {{kayit.dersAdi}} </td>
+            <td> {{kayit.soruSayisi}} </td>
+            <td> {{kayit.sinavSuresi + " Dakika"}} </td>
+            <td><button class="btn btn-outline-info btn-sm" (click)="KayitSec(kayit);detay=true;">Detay</button>
+            </td>
+            <td><button class="btn btn-outline-info" [routerLink]="['/onaylama']">Sınava Gir</button></td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
